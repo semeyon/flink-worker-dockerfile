@@ -9,5 +9,6 @@ ENV FLINK_TASKMANAGER_SCRIPT_REPLACE_WITH 2>&1 < /dev/null
 RUN ["/bin/bash", "-c", "cat $FLINK_DIRECTORY/bin/taskmanager.sh | replace-string \"$FLINK_TASKMANAGER_SCRIPT_TO_REPLACE\" \"$FLINK_TASKMANAGER_SCRIPT_REPLACE_WITH\" > $FLINK_DIRECTORY/bin/taskmanager-blocking.sh && \
 chmod +x $FLINK_DIRECTORY/bin/taskmanager-blocking.sh"]
 
-CMD ["/bin/bash", "-c", "$FLINK_DIRECTORY/bin/taskmanager-blocking.sh start"]
+
+CMD ["/bin/bash", "-c", "sleep 10s && $FLINK_DIRECTORY/bin/taskmanager-blocking.sh start"]
 
